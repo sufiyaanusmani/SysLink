@@ -151,3 +151,5 @@ fabric.properties
 
 *.gdoc
 *.ini
+*.out
+utility/*.out
