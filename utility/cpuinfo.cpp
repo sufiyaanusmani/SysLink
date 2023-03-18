@@ -34,7 +34,7 @@ int main()
     char buffer[1024];
     string result = "";
     string path;
-    string directoryName = "/tmp/kernelkit";
+    string directoryName = "/tmp/syslink";
 
     mkdir(directoryName.c_str(), 0777);
     // Run the Linux command and open a pipe to read its output

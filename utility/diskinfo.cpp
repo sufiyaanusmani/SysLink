@@ -10,7 +10,7 @@ int main()
     char buffer[1024];
     string result = "";
     string path;
-    string directoryName = "/tmp/kernelkit";
+    string directoryName = "/tmp/syslink";
 
     fs::space_info info = fs::space("/");
 
