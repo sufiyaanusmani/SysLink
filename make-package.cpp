@@ -22,7 +22,7 @@ int main()
         usleep(100000); // Sleep for 100ms
     }
     printf("\n");
-    system("tar -cvf syslink.tar utility");
+    system("tar -cvf syslink.tar SysLink");
     printf("\n");
     for (i = 0; i <= total; i++)
     {
