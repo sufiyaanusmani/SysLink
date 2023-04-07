@@ -2,9 +2,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <string>
+#include <sys/stat.h>
 
-int main()
+using namespace std;
+
+int main(int argc, char *argv[])
 {
+    string pass = argv[1];
     const char animation[] = "|/-\\";
     const int total = 100;
     int i;
@@ -41,6 +46,8 @@ int main()
         usleep(30000);
     }
     printf("\n");
+    string command = "echo " + pass + " | sudo -S mv syslink /";
+    system(command.c_str());
     printf("SysLink Installed Successfully\n");
     return 0;
 }
