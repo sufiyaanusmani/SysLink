@@ -24,23 +24,25 @@ int main()
 
     mkdir(directoryName.c_str(), 0777);
     // Run the Linux command and open a pipe to read its output
-    FILE *pipe = popen("iostat -o JSON", "r");
-    if (!pipe)
+    while (1)
     {
-        cerr << "Failed to run command" << std::endl;
-        return 1;
+        FILE *pipe = popen("iostat -o JSON", "r");
+        if (!pipe)
+        {
+            cerr << "Failed to run command" << std::endl;
+            return 1;
+        }
+
+        // Read the output of the command line by line
+        while (fgets(buffer, sizeof(buffer), pipe) != NULL)
+        {
+            result += buffer;
+        }
+
+        // Close the pipe and print the output
+        pclose(pipe);
+        path = directoryName + "/iostat.json";
+        storeInFile(path, result);
     }
-
-    // Read the output of the command line by line
-    while (fgets(buffer, sizeof(buffer), pipe) != NULL)
-    {
-        result += buffer;
-    }
-
-    // Close the pipe and print the output
-    pclose(pipe);
-    path = directoryName + "/iostat.json";
-    storeInFile(path, result);
-
     return 0;
 }
