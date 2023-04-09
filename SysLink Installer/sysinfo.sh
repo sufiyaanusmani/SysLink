@@ -1,0 +1,4 @@
+for file in /syslink/sysinfo/*.cpp
+do
+	g++ "$file" -o "${file%.cpp}"
+done
