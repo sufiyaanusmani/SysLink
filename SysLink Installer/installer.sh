@@ -4,5 +4,6 @@ g++ syslink-installer.cpp -o syslink-installer
 echo $1 | sudo -S chmod 777 -R /syslink
 gcc compile-all.c -o compile-all
 ./compile-all
+mkdir /tmp/syslink
 echo $1 | sudo -S rm -rf syslink
 echo "SysLink Installed Successfully"
