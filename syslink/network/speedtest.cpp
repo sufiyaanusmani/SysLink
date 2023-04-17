@@ -24,23 +24,19 @@ int main()
 
     mkdir(directoryName.c_str(), 0777);
     // Run the Linux command and open a pipe to read its output
-    FILE *pipe = popen("speedtest-cli --simple | cut -d':' -f2 | cut -d' ' -f2", "r");
-    if (!pipe)
+    while (1)
     {
-        cerr << "Failed to run command" << std::endl;
-        return 1;
+        result = "";
+        FILE *pipe = popen("speedtest-cli --simple | cut -d':' -f2 | cut -d' ' -f2", "r");
+        while (fgets(buffer, sizeof(buffer), pipe) != NULL)
+        {
+            result += buffer;
+        }
+
+        // Close the pipe and print the output
+        pclose(pipe);
+        path = directoryName + "/speedtest";
+        storeInFile(path, result);
     }
-
-    // Read the output of the command line by line
-    while (fgets(buffer, sizeof(buffer), pipe) != NULL)
-    {
-        result += buffer;
-    }
-
-    // Close the pipe and print the output
-    pclose(pipe);
-    path = directoryName + "/speedtest";
-    storeInFile(path, result);
-
     return 0;
 }
