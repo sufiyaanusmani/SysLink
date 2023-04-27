@@ -1,19 +1,18 @@
 for file in /syslink/realtime/*.syslink
 do
-    $file &
+    $file & 2> /dev/null
+done
+
+for file in /syslink/network/*.syslink
+do
+    $file 2> /dev/null
 done
 
 for file in /syslink/sysinfo/*.syslink
 do
-    $file
+    $file 2> /dev/null
 done
 
-/syslink/user/loggedinusers
-/syslink/user/regularuserss
-/syslink/user/username
-/syslink/network/connectiontype
-/syslink/network/hostname
-/syslink/network/interfacename
-/syslink/network/interfacetype
-/syslink/network/ip
-/syslink/network/speedtest &
+/syslink/user/loggedinusers.syslink 2> /dev/null
+/syslink/user/regularusers.syslink 2> /dev/null
+/syslink/user/username.syslink 2> /dev/null

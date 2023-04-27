@@ -17,7 +17,7 @@ int main()
 
     mkdir(directoryName.c_str(), 0777);
     // Run the Linux command and open a pipe to read its output
-    FILE *pipe = popen("df -BG | awk '{print $2,$3,$4}' | sort -hr | sed 's/ /@/g' | head -n 1 > /tmp/syslink/diskinfo", "r");
+    FILE *pipe = popen("timedatectl | grep -i 'time zone' | awk '{print $3}' | sed 's/\//@/g' > /tmp/syslink/location", "r");
     if (!pipe)
     {
         cerr << "Failed to run command" << std::endl;
