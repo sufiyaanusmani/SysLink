@@ -8,4 +8,5 @@ gcc compile-all.c -o compile-all -lpthread
 ./compile-all
 mkdir /tmp/syslink
 echo $1 | sudo -S rm -rf syslink
+cp run-all.sh ~
 echo "SysLink Installed Successfully"
